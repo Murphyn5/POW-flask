@@ -1,78 +1,177 @@
-<p align="center">
-  <a href="https://nextjs-flask-starter.vercel.app/">
-    <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
-    <h3 align="center">Next.js Flask Starter</h3>
-  </a>
-</p>
+# About FootTracks
 
-<p align="center">Simple Next.js boilerplate that uses <a href="https://flask.palletsprojects.com/">Flask</a> as the API backend.</p>
+FootTracks is a web application inspired by Strava. It allows users to search for other users, create/read/update/delete activities and comments, create/read/delete likes for avtivities and follows for users, upload profile pictures using Amazon AWS, and record and create activities using Leaflet.js. [Click here to visit FootTracks's live site](https://foottracks-myao.onrender.com).
 
-<br/>
+<br>
 
-## Introduction
+# Wiki Links
 
-This is a hybrid Next.js + Python app that uses Next.js as the frontend and Flask as the API backend. One great use case of this is to write Next.js apps that use Python AI libraries on the backend.
+- [Feature List](https://github.com/Murphyn5/FootTracks/wiki/MVP-Feature-List)
+- [User Stories](https://github.com/Murphyn5/FootTracks/wiki/User-Stories)
+- [Database Schema](https://github.com/Murphyn5/FootTracks/wiki/Database-Schema)
+- [WireFrame](https://github.com/Murphyn5/FootTracks/wiki/Wireframe)
 
-## How It Works
+<br>
 
-The Python/Flask server is mapped into to Next.js app under `/api/`.
 
-This is implemented using [`next.config.js` rewrites](https://github.com/vercel/examples/blob/main/python/nextjs-flask/next.config.js) to map any request to `/api/:path*` to the Flask API, which is hosted in the `/api` folder.
+# Tech Stack
 
-On localhost, the rewrite will be made to the `127.0.0.1:5328` port, which is where the Flask server is running.
+Frameworks, Platforms and Libraries:
 
-In production, the Flask server is hosted as [Python serverless functions](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python) on Vercel.
+[![HTML][html.js]][html-url]
+[![CSS][css.js]][css-url]
+[![Javascript][javascript.js]][javascript-url]
+[![React][react.js]][react-url]
+[![Redux][redux.js]][redux-url]
+[![Python][python.js]][python-url]
+[![Flask][flask.js]][flask-url]
+[![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white)](https://leafletjs.com/)
+[![Tailwind][tailwind.js]][tailwind-url]
+[![MapBox][mapbox.js]][mapbox-url]
 
-## Demo
 
-https://nextjs-flask-starter.vercel.app/
+Database:
 
-## Deploy Your Own
+[![PostgreSQL][postgresql.js]][postgresql-url]
 
-You can clone & deploy it to Vercel with one click:
+<br>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-title=Next.js%20Flask%20Starter&demo-description=Simple%20Next.js%20boilerplate%20that%20uses%20Flask%20as%20the%20API%20backend.&demo-url=https%3A%2F%2Fnextjs-flask-starter.vercel.app%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F795TzKM3irWu6KBCUPpPz%2F44e0c6622097b1eea9b48f732bf75d08%2FCleanShot_2023-05-23_at_12.02.15.png&project-name=Next.js%20Flask%20Starter&repository-name=nextjs-flask-starter&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fnextjs-flask&from=vercel-examples-repo)
+# Get Started
 
-## Developing Locally
+To run this project locally, please perform the following steps:
 
-You can clone & create this repo with the following command
+1. Clone the repository
+   ```sh
+   git clone https://github.com/Murphyn5/FootTracks.git
+   ```
+2. Install dependencies at the root directory
+   ```sh
+   pipenv install -r requirements.txt
+   ```
 
-```bash
-npx create-next-app nextjs-flask --example "https://github.com/vercel/examples/tree/main/python/nextjs-flask"
-```
+3. Create a **.env** file based on the example with proper settings for your development environment (Amazon S3 credentials required to upload profile pictures)
 
-## Getting Started
+4. Get into your pipenv, migrate your database, seed your database, and run your Flask app
 
-First, install the dependencies:
+   ```bash
+   pipenv shell
+   ```
 
-```bash
-npm install
-# or
-yarn
-# or
-pnpm install
-```
+   ```bash
+   flask db upgrade
+   ```
 
-Then, run the development server:
+   ```bash
+   flask seed all
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+   ```bash
+   flask run
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory. Install the npm packages while inside of the `react-app` directory.
+   ```bash
+   npm install
+   ```
 
-The Flask server will be running on [http://127.0.0.1:5328](http://127.0.0.1:5328) – feel free to change the port in `package.json` (you'll also need to update it in `next.config.js`).
+6. Run the backend server at the root directory with pipenv run flask run
+   ```bash
+   pipenv run flask run
+   ```
 
-## Learn More
+7. Run the frontend server inside the `react-app` with npm start
+   ```bash
+   npm start
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/) - learn about Flask features and API.
+# Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Arriving at the login screen, visitors can either login as a demo user or login using an email and password already saved to the database.
+
+![Screen Shot 2023-04-04 at 11 57 50 AM](https://user-images.githubusercontent.com/63930644/229895426-1cc9a2dc-d9f0-48a3-906a-9136df7c823d.png)
+
+Visitors can also login by signing up and create their own user profile.
+
+![Screen Shot 2023-04-04 at 12 14 02 PM](https://user-images.githubusercontent.com/63930644/229896650-9dbfd712-0cd6-48b8-9099-c8f4b770659f.png)
+
+After logging in, visitors arrive at their feed where they can view activities created by users that they follow. If a visitor is not currently following other users, they will be prompted to follow another user before they can view any activities in their feed.
+
+![Screen Shot 2023-04-04 at 1 51 34 PM](https://user-images.githubusercontent.com/63930644/229917946-943fe0ec-8766-4d1d-8720-8b6ee928a0bc.png)
+
+After clicking the button to "Find Friends" or by searching for friends using the search bar, visitors will be presented with a list of users that they can follow.
+
+![Screen Shot 2023-04-04 at 1 50 44 PM](https://user-images.githubusercontent.com/63930644/229917700-9e3ac060-ab22-409b-891b-403e2ec4cd1f.png)
+
+Returning to their feed, visitors will then be able to see activities in the "Following" Tab and the "My Activities" tab ordered by activity date. The "Following" tab includes activities created by the visitor and users that they follow. The "My Activities" tab includes activities created only by the user. For each activity, visitors will: be able to see the number of likes (displayed as kudos) and comments an activity has, have the option to like/unlike the activity if they are not the owner, and have the ability to open a modal to see comment and kudos details.
+
+![Screen Shot 2023-04-04 at 1 52 23 PM](https://user-images.githubusercontent.com/63930644/229918078-770b7165-baef-4cf7-93f5-beb4037e1d15.png)
+
+![Screen Shot 2023-04-04 at 1 50 18 PM](https://user-images.githubusercontent.com/63930644/229917520-079ef045-c846-4f32-9f96-84064c6abedc.png)
+
+While viewing the comments modal, visitors will: have the ability to post/edit/ or delete comments they are the owner of, have the ability to delete any comment if they are the owner of the activity, and view details for users that have liked the activity.
+
+![Screen Shot 2023-04-04 at 1 56 19 PM](https://user-images.githubusercontent.com/63930644/229918903-af451566-8403-4320-8295-0c54fe59bec7.png)
+
+![Screen Shot 2023-04-04 at 1 59 14 PM](https://user-images.githubusercontent.com/63930644/229919783-a17e3c28-2281-49fb-8c4e-373b48746c8f.png)
+
+To create an activity, visitors can access the dropdown in the top right corner of the window to either manually create an activity or to record an activity.
+
+![Screen Shot 2023-04-04 at 2 00 57 PM](https://user-images.githubusercontent.com/63930644/229920452-6695a2e7-71f3-46e4-9191-50090531b21b.png)
+
+
+For manually creating an activity, visitors will will be required to submit data for distance, duration, title, sport, and date of the activity.
+
+![Screen Shot 2023-04-04 at 2 09 29 PM](https://user-images.githubusercontent.com/63930644/229923077-f4d34004-3c70-404f-bc6a-c2842e028bf8.png)
+
+For recording activities, this applicates integrates into react a running tracker developed by [Anthony Ng](https://medium.com/@engineerng) that he shared in the article: [Make a running tracker with Geolocation API](https://medium.com/geekculture/make-a-running-tracker-with-geolocation-api-8b2ac541196e). Recording an activity using this feature allows the visitor to toggle on/off a tracker that tracks the distance, duration, and elevation gain of an activity. When recording is toggled off, visitors can then choose to save the activity with the recorded data along with a map including a polyline displaying the visitor's path during the activity.
+
+[Demo on Youtube](https://www.youtube.com/watch?v=Un9sFEMaWf8)
+
+[Github Link](https://github.com/ng-the-engineer/running-tracker)
+
+![Screen Shot 2023-04-04 at 2 11 14 PM](https://user-images.githubusercontent.com/63930644/229923438-0610bf3b-3542-41ea-988c-fb3492d46bad.png)
+
+![Screen Shot 2023-04-04 at 2 11 37 PM](https://user-images.githubusercontent.com/63930644/229923506-ffe2ea30-4a84-4614-9c9c-1d6f4ff9e48b.png)
+
+The final feature included in FootTracks is the "My Activities" page where visitors have the option to edit/delete any of their owned activities.
+
+![Screen Shot 2023-04-04 at 2 26 08 PM](https://user-images.githubusercontent.com/63930644/229926449-e89c3cad-8e01-4a59-ad82-25880fe2d7f8.png)
+
+# Future Implementation Goals
+
+Features that are planned to be built into FootTracks at a later date include a user profile page, the ability for users to create/read/delete images to their activities, an activity details page, and the implementation of a groups feature that users can join and interact with activities from other members of the group.
+
+# Contact
+
+# Contact
+
+Email: nlimurphy@gmail.com
+
+Portfolio: https://murphyn5.github.io/
+
+LinkedIn: https://linkedin.com/in/nicholas-murphy-dev
+
+<!-- References and Icons -->
+
+[html.js]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[css.js]: https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white
+[css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
+[javascript.js]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[javascript-url]: https://www.javascript.com/
+[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
+[redux.js]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
+[redux-url]: https://redux.js.org/
+[python.js]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white
+[python-url]: https://www.python.org/
+[flask.js]: https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white
+[flask-url]: https://expressjs.com/
+[postgresql.js]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
+[postgresql-url]: https://www.postgresql.org/
+[tailwind.js]: https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[tailwind-url]: https://tailwindcss.com/
+[mapbox.js]: https://img.shields.io/badge/Mapbox-2962ff?style=for-the-badge&logo=mapbox&logoColor=white
+[mapbox-url]: https://www.mapbox.com/
