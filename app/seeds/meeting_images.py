@@ -7,7 +7,7 @@ from datetime import datetime
 def seed_meeting_images():
     db.session.add(
         MeetingImage(
-            url="/static/images/IMG_6160-225x300.jpeg",
+            url="/recordedmeeting1.jpeg",
             caption="",
             meeting_id=1,
         )
@@ -15,7 +15,7 @@ def seed_meeting_images():
 
     db.session.add(
         MeetingImage(
-            url="/static/images/ocrn_logoƒ-300x244.png",
+            url="/OCRN.png",
             caption="",
             meeting_id=1,
         )

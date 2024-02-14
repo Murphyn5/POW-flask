@@ -7,7 +7,7 @@ from datetime import datetime
 def seed_community_event_images():
     db.session.add(
         CommunityEventImage(
-            url="/static/images/PROTESt-Saturdays-1-300x225.jpeg",
+            url="/protest-saturday.jpeg",
             caption="",
             community_event_id=1,
         )
@@ -15,7 +15,7 @@ def seed_community_event_images():
 
     db.session.add(
         CommunityEventImage(
-            url="/static/images/Feb-Watersheds-workshop.jpeg",
+            url="/Feb-Watersheds-workshop.1-300x232.jpeg",
             caption="",
             community_event_id=2,
         )
@@ -23,7 +23,7 @@ def seed_community_event_images():
 
     db.session.add(
         CommunityEventImage(
-            url="/static/images/OcccWaterIsInOurHands.jpg",
+            url="/waterinourhands.jpg",
             caption="",
             community_event_id=3,
         )
