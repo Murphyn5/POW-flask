@@ -25,7 +25,7 @@ class Meeting(db.Model, UserMixin):
         return {
             'id': self.id,
             'title': self.title,
-            'source': self.source,
+            'meeting_date': self.meeting_date,
             'description': self.description,
             'link': self.link,
             'created_at': self.created_at.isoformat() if self.created_at else None,
