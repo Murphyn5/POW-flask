@@ -53,7 +53,7 @@ def get_community_events():
         community_event_dict["images_length"] = images_length
         community_event_dict["images"] = []
         for image in community_event.community_event_images:
-            community_event_dict["images"].append(image.to_dict()["url"])
+            community_event_dict["images"].append(image.to_dict())
         community_events_to_return.append(community_event_dict)
 
     return {
