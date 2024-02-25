@@ -10,22 +10,28 @@ community_event_routes = Blueprint("community_events", __name__)
 
 
 # CREATE NEW COMMUNITY EVENT
-@community_event_routes.route("/", methods=["POST"])
+@community_event_routes.route("/new", methods=["POST"])
 @login_required
 def create_community_event():
     form = CommunityEventForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    data = request.get_json()
+    print(form.data)
+    print(form["csrf_token"].data)
+
+
+    print(form.validate_on_submit())
+    print(form.errors)
+
     # dt = datetime.strptime(data["date_time"], "%Y-%m-%d %H:%M:%S")
     if form.validate_on_submit():
         community_event = CommunityEvent(
-            title=data["title"],
-            days=data["days"],
-            dates=data["dates"],
-            times=data["times"],
-            location=data["location"],
-            description=data["description"],
-            link=data["link"],
+            title=form.data["title"],
+            days=form.data["days"],
+            dates=form.data["dates"],
+            times=form.data["times"],
+            location=form.data["location"],
+            description=form.data["description"],
+            link=form.data["link"],
             updated_at=datetime.utcnow(),
             created_at=datetime.utcnow(),
         )
@@ -73,9 +79,13 @@ def update_community_event(id):
             "errors": ["error: CommunityEvent couldn't be found"],
             "status_code": 404,
         }, 404
-    data = request.get_json()
+    print("HIIII")
+
+    # data = request.get_json()
+
     # dt = datetime.strptime(data["date_time"], "%Y-%m-%d %H:%M:%S")
     form = CommunityEventForm()
+    data = form.data
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         community_event.title = data["title"]
