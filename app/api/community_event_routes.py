@@ -68,6 +68,23 @@ def get_community_events():
         }
     }
 
+# GET COMMUNITY EVENT DETAILS BY ID
+@community_event_routes.route('/<int:id>')
+def get_community_event_details(id):
+    # Single community_event
+    community_event = CommunityEvent.query.get(id).to_dict()
+
+    if not community_event:
+        return {
+            "errors": "error: Community Event couldn't be found",
+            "status_code": 404
+        }, 404
+
+    # Handle images
+    images_query = db.session.query(CommunityEventImage).filter(CommunityEventImage.community_event_id == id)
+    images = images_query.all()
+    community_event['images'] = [image.to_dict() for image in images]
+    return jsonify(community_event)
 
 # UPDATE COMMUNITY EVENT
 @community_event_routes.route("/<int:id>", methods=["PUT"])
