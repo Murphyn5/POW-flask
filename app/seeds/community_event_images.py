@@ -1,4 +1,4 @@
-from app.models import db, CommunityEventImage, environment, SCHEMA
+from app.models import db, CommunityEventImage, debug, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -42,7 +42,7 @@ def seed_community_event_images():
 
 
 def undo_community_event_images():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.community_event_images RESTART IDENTITY CASCADE;"
         )

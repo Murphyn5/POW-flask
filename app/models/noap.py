@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .db import db, debug, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
@@ -7,7 +7,7 @@ from datetime import datetime
 class Noap(db.Model, UserMixin):
     __tablename__ = "noaps"
 
-    if environment == "production":
+    if debug == 1:
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)

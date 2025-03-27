@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import db, environment, SCHEMA, CommunityEvent
+from app.models import db, debug, SCHEMA, CommunityEvent
 from sqlalchemy.sql import text
 
 def seed_community_events():
@@ -48,7 +48,7 @@ def seed_community_events():
     db.session.commit()
 
 def undo_community_events():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.community_events RESTART IDENTITY CASCADE;")
     else:

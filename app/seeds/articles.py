@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import db, environment, SCHEMA, Article
+from app.models import db, debug, SCHEMA, Article
 from sqlalchemy.sql import text
 
 def seed_articles():
@@ -86,7 +86,7 @@ def seed_articles():
     db.session.commit()
 
 def undo_articles():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.articles RESTART IDENTITY CASCADE;")
     else:

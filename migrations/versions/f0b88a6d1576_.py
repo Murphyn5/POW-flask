@@ -9,7 +9,7 @@ from alembic import op
 import sqlalchemy as sa
 
 import os
-environment = os.getenv("FLASK_ENV")
+debug = os.getenv("FLASK_DEBUG")
 SCHEMA = os.environ.get("SCHEMA")
 
 
@@ -33,7 +33,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE articles SET SCHEMA {SCHEMA};")
 
     op.create_table('community_events',
@@ -50,7 +50,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE community_events SET SCHEMA {SCHEMA};")
 
     op.create_table('documentaries',
@@ -64,7 +64,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE documentaries SET SCHEMA {SCHEMA};")
 
     op.create_table('meetings',
@@ -78,7 +78,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE meetings SET SCHEMA {SCHEMA};")
 
     op.create_table('noaps',
@@ -97,7 +97,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE noaps SET SCHEMA {SCHEMA};")
 
     op.create_table('users',
@@ -108,7 +108,7 @@ def upgrade():
     sa.UniqueConstraint('email')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
     op.create_table('article_images',
@@ -122,7 +122,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE article_images SET SCHEMA {SCHEMA};")
 
     op.create_table('community_event_images',
@@ -136,7 +136,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE community_event_images SET SCHEMA {SCHEMA};")
 
     op.create_table('documentary_images',
@@ -150,7 +150,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE documentary_images SET SCHEMA {SCHEMA};")
 
     op.create_table('meeting_images',
@@ -164,7 +164,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
 
-    if environment == "production":
+    if debug == 1:
         op.execute(f"ALTER TABLE meeting_images SET SCHEMA {SCHEMA};")
 
     # ### end Alembic commands ###

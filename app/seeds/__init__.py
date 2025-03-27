@@ -10,7 +10,7 @@ from app.seeds.community_event_images import seed_community_event_images, undo_c
 from app.seeds.documentaries import seed_documentaries, undo_documentaries
 from app.seeds.documentary_images import seed_documentary_images, undo_documentary_images
 
-from app.models.db import db, environment, SCHEMA
+from app.models.db import db, debug, SCHEMA
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,7 +20,7 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    if environment == 'production':
+    if debug == 1:
         # Before seeding in production, you want to run the seed undo
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).

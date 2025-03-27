@@ -1,4 +1,4 @@
-from app.models import db, ArticleImage, environment, SCHEMA
+from app.models import db, ArticleImage, debug, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -82,7 +82,7 @@ def seed_article_images():
 
 
 def undo_article_images():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.article_images RESTART IDENTITY CASCADE;"
         )

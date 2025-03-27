@@ -8,4 +8,4 @@ from .documentary import Documentary
 from .meeting import Meeting
 from .meeting_image import MeetingImage
 from .noap import Noap
-from .db import db, environment, SCHEMA
+from .db import db, debug, SCHEMA

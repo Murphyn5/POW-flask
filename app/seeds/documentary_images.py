@@ -1,4 +1,4 @@
-from app.models import db, DocumentaryImage, environment, SCHEMA
+from app.models import db, DocumentaryImage, debug, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -161,7 +161,7 @@ def seed_documentary_images():
 
 
 def undo_documentary_images():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.documentary_images RESTART IDENTITY CASCADE;"
         )

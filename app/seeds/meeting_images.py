@@ -1,4 +1,4 @@
-from app.models import db, MeetingImage, environment, SCHEMA
+from app.models import db, MeetingImage, debug, SCHEMA
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -34,7 +34,7 @@ def seed_meeting_images():
 
 
 def undo_meeting_images():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.meeting_images RESTART IDENTITY CASCADE;"
         )

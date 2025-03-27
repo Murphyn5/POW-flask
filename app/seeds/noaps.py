@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import db, environment, SCHEMA, Noap
+from app.models import db, debug, SCHEMA, Noap
 from sqlalchemy.sql import text
 
 def seed_noaps():
@@ -59,7 +59,7 @@ def seed_noaps():
     db.session.commit()
 
 def undo_noaps():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.noaps RESTART IDENTITY CASCADE;")
     else:

@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import db, environment, SCHEMA, Documentary
+from app.models import db, debug, SCHEMA, Documentary
 from sqlalchemy.sql import text
 
 
@@ -195,7 +195,7 @@ def seed_documentaries():
 
 
 def undo_documentaries():
-    if environment == "production":
+    if debug == 1:
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.documentaries RESTART IDENTITY CASCADE;"
         )
